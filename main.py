@@ -29,7 +29,7 @@ from handlers.student_material_dir import edit_material as s_edit
 from handlers.student_material_dir import delete_material as s_delete
 from handlers.student_material_dir import view_material as s_view
 
-from bot_create import dp
+from bot_create import bot, dp, WEBHOOK_URL, WEBHOOK_PATH, WEBAPP_HOST, WEBAPP_PORT
 from keyboard import first_keyboard
 from user_role_files import teacher, student
 
@@ -40,7 +40,6 @@ import aioschedule
 import asyncio
 
 from aiogram.utils.executor import start_webhook
-from config import bot, dp, WEBHOOK_URL, WEBHOOK_PATH, WEBAPP_HOST, WEBAPP_PORT
 
 ###
 # teacher material
@@ -95,6 +94,7 @@ logging.basicConfig(level=logging.INFO)
 @dp.message_handler(commands="start")
 async def cmd_start(message: types.Message):
     await message.answer("Ласкаво прошу до StudyBot!", reply_markup=first_keyboard)
+
 
 
 async def scheduler():
